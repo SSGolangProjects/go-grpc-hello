@@ -29,5 +29,15 @@ cd go-grpc-hello
 docker-compose up
 ```
 
-# Diagram
+## Diagram
+Below is a block outlining the components in this solution. 
 ![Alt text](diagram.png?raw=true "Go gRPC Hello World")
+
+# Tasks finished (in the order of completion)
+- [x] Started gRPC(and Protobuf) for defining the service contract
+- [x] Generated the Golang stubs using above file
+- [x] Implemented both Server and Client
+- [x] Used two separate dockerfile, one for Server and Client respectively
+- [x] Used Go modules `go mod` 
+- [x] Used docker-compose to facilitate single command setup to bring both components
+- [x] Used simple docker network using the `host`  
