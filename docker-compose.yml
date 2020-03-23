@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+
+  server:
+    build: server/
+
+    command: ./helloworld_server
+
+    ports:
+      - 8081:8081
+
+  client:
+    build: client/
+
+    command: ./helloworld_client
+
+    # The keyword 'network_mode' is used to define the network type.
+    # Here we define that the container can access to the 'localhost' of the computer.
+    network_mode: host
+
+    depends_on:
+      - server
+

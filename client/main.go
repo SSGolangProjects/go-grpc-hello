@@ -5,6 +5,7 @@ import (
 	helloworld "github.com/basicsbeauty/go-grpc-hello/api"
 	"google.golang.org/grpc"
 	"log"
+	"strconv"
 	"time"
 )
 
@@ -21,10 +22,12 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	r, err := c.HandleHelloWorld(ctx, &helloworld.HelloWorldRequest{Input: "Test"})
-	if err != nil {
-		log.Fatalf("could not greet: %v", err)
+	counter := 10
+	for i := 0; i < counter; i++ {
+		r, err := c.HandleHelloWorld(ctx, &helloworld.HelloWorldRequest{Input: strconv.Itoa(i)})
+		if err != nil {
+			log.Fatalf("HelloWorld Client: HelloWork call: Failed: %v", err)
+		}
+		log.Printf("HelloWorld Client: HelloWork Response: [%d:%d] %v", i, counter, r)
 	}
-
-	log.Printf("HelloWorld Client: HelloWork Response: %v", r)
 }

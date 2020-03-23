@@ -2,16 +2,23 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"github.com/basicsbeauty/go-grpc-hello/api"
 	"google.golang.org/grpc"
 	"log"
 	"net"
+	"time"
 )
 
 const serverPort = ":8081"
 const serverProtocol = "tcp"
 
 const StatusCodeSuccess = 200
+
+// Utility function for getting current year
+func GetYear() int {
+	return time.Now().Year()
+}
 
 // server for implementing HelloWorld
 type server struct {
@@ -21,7 +28,8 @@ type server struct {
 // HandleHelloWorld
 func (s *server) HandleHelloWorld(ctx context.Context, req *helloworld.HelloWorldRequest) (*helloworld.HelloWorldResponse, error) {
 	log.Println("HelloWorld Service: HelloWorld call: ", req.Input)
-	return &helloworld.HelloWorldResponse{Message: "Hello World from API", Rcode: StatusCodeSuccess}, nil
+	message := fmt.Sprintf("Hello World from year %d", GetYear())
+	return &helloworld.HelloWorldResponse{Message: message, Rcode: StatusCodeSuccess}, nil
 }
 
 func main() {
