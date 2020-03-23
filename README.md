@@ -1,5 +1,5 @@
 # go-grpc-hello
-Hello world using Golang and GRPS
+Hello world using Golang and gRPC
 
 ## There are two parts for this POC
 - Server
@@ -28,3 +28,6 @@ git clone https://github.com/basicsbeauty/go-grpc-hello
 cd go-grpc-hello
 docker-compose up
 ```
+
+# Diagram
+![Alt text](diagram.png?raw=true "Go gRPC Hello World")
